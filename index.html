@@ -1,0 +1,443 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+      text-align: center; /* Center align the content within each cell */
+      vertical-align: middle; /* Vertically center the content within each cell */
+      padding: 10px; /* Add padding for visual aesthetics */
+	  border: 3px solid white;
+
+}
+
+input[type="radio"] {
+  transform: scale(1);
+}
+</style>
+<center>Remember to start with 11111, move to 22222, etc., and always indicate whether your guess is higher or lower than the number!<br><br> You need to do this until you've found 5 correct digits.<br><br> Then guess the final guess, mark the digits and higher / lower, and try the possible answers!<br><br>You may click the buttons to copy the numbers to your clipboard.<br><br></center>
+<link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div class = "radio-container" onclick = "Update()";>
+<table>
+  <tr>
+    <th></th>
+    <th>0</th>
+    <th>1</th>
+    <th>2</th>
+	<th>3</th>
+	<th>4</th>
+    <th>Higher</th>
+    <th>Lower</th>
+  </tr>
+  <tr>
+    <td><button style = "font-size: 18px;", id="11111", font-size = "16px", onclick = copy_clipboard(11111)>11111</button></td>
+    <td><input type="radio" name="row1" value="0" checked></td>
+    <td><input type="radio" name="row1" value="1"></td>
+    <td><input type="radio" name="row1" value="2"></td>
+	<td><input type="radio" name="row1" value="3"></td>
+    <td><input type="radio" name="row1" value="4"></td>
+	<td><input type="radio" name="row11" value="Higher"></td>
+    <td><input type="radio" name="row11" value="Lower" checked></td>
+  </tr>
+  <tr>
+    <td><button style = "font-size: 18px;", id="22222", font-size = "16px", onclick = copy_clipboard(22222)>22222</button></td>
+    <td><input type="radio" name="row2" value="0" checked></td>
+    <td><input type="radio" name="row2" value="1"></td>
+    <td><input type="radio" name="row2" value="2"></td>
+	<td><input type="radio" name="row2" value="3"></td>
+    <td><input type="radio" name="row2" value="4"></td>
+	<td><input type="radio" name="row22" value="Higher"></td>
+    <td><input type="radio" name="row22" value="Lower" checked></td>
+  </tr>
+  <tr>
+    <td><button style = "font-size: 18px;", id="33333", font-size = "16px", onclick = copy_clipboard(33333)>33333</button></td>
+    <td><input type="radio" name="row3" value="0" checked></td>
+    <td><input type="radio" name="row3" value="1"></td>
+    <td><input type="radio" name="row3" value="2"></td>
+	<td><input type="radio" name="row3" value="3"></td>
+    <td><input type="radio" name="row3" value="4"></td>
+	<td><input type="radio" name="row33" value="Higher"></td>
+    <td><input type="radio" name="row33" value="Lower" checked></td>
+  </tr>
+    <tr>
+      <td><button style = "font-size: 18px;", id="44444", font-size = "16px", onclick = copy_clipboard(44444)>44444</button></td>
+    <td><input type="radio" name="row4" value="0" checked></td>
+    <td><input type="radio" name="row4" value="1"></td>
+    <td><input type="radio" name="row4" value="2"></td>
+	<td><input type="radio" name="row4" value="3"></td>
+    <td><input type="radio" name="row4" value="4"></td>
+	<td><input type="radio" name="row44" value="Higher"></td>
+    <td><input type="radio" name="row44" value="Lower" checked></td>
+  </tr>
+      <tr>
+        <td><button style = "font-size: 18px;", id="55555", font-size = "16px", onclick = copy_clipboard(55555)>55555</button></td>
+    <td><input type="radio" name="row5" value="0" checked></td>
+    <td><input type="radio" name="row5" value="1"></td>
+    <td><input type="radio" name="row5" value="2"></td>
+	<td><input type="radio" name="row5" value="3"></td>
+    <td><input type="radio" name="row5" value="4"></td>
+	<td><input type="radio" name="row55" value="Higher"></td>
+    <td><input type="radio" name="row55" value="Lower" checked></td>
+  </tr>
+    <tr>
+      <td><button style = "font-size: 18px;", id="66666", font-size = "16px", onclick = copy_clipboard(66666)>66666</button></td>
+    <td><input type="radio" name="row6" value="0" checked></td>
+    <td><input type="radio" name="row6" value="1"></td>
+    <td><input type="radio" name="row6" value="2"></td>
+	<td><input type="radio" name="row6" value="3"></td>
+    <td><input type="radio" name="row6" value="4"></td>
+	<td><input type="radio" name="row66" value="Higher"></td>
+    <td><input type="radio" name="row66" value="Lower" checked></td>
+  </tr>
+    <tr>
+      <td><button style = "font-size: 18px;", id="77777", font-size = "16px", onclick = copy_clipboard(77777)>77777</button></td>
+    <td><input type="radio" name="row7" value="0" checked></td>
+    <td><input type="radio" name="row7" value="1"></td>
+    <td><input type="radio" name="row7" value="2"></td>
+	<td><input type="radio" name="row7" value="3"></td>
+    <td><input type="radio" name="row7" value="4"></td>
+	<td><input type="radio" name="row77" value="Higher"></td>
+    <td><input type="radio" name="row77" value="Lower" checked></td>
+  </tr>
+    <tr>
+      <td><button style = "font-size: 18px;", id="88888", font-size = "16px", onclick = copy_clipboard(88888)>88888</button></td>
+    <td><input type="radio" name="row8" value="0" checked></td>
+    <td><input type="radio" name="row8" value="1"></td>
+    <td><input type="radio" name="row8" value="2"></td>
+	<td><input type="radio" name="row8" value="3"></td>
+    <td><input type="radio" name="row8" value="4"></td>
+	<td><input type="radio" name="row88" value="Higher"></td>
+    <td><input type="radio" name="row88" value="Lower" checked></td>
+  </tr>
+    <tr>
+    <td> <button style = "font-size: 18px;", id="99999", font-size = "16px", onclick = copy_inner_html()> <div id="final_guess">Final</div> </button> </td>
+    <td><input type="radio" name="row9" value="0" checked></td>
+    <td><input type="radio" name="row9" value="1"></td>
+    <td><input type="radio" name="row9" value="2"></td>
+	<td><input type="radio" name="row9" value="3"></td>
+    <td><input type="radio" name="row9" value="4"></td>
+	<td><input type="radio" name="row99" value="Higher"></td>
+    <td><input type="radio" name="row99" value="Lower" checked></td>
+  </tr>
+</table>
+</div>
+<center>Possible Answers</center><br>
+<div id= "final_guess_html" </div>
+</body>
+</html>
+
+<script>
+
+
+
+function permutateString(string) {
+  // Thanks ChatGPT
+  // Base case: if the string is empty, no permutations can be generated
+  if (string.length === 0) return [''];
+
+  // Initialize an array to store permutations
+  const permutations = [];
+
+  // Iterate through each character of the string
+  for (let i = 0; i < string.length; i++) {
+    // Extract the current character
+    const char = string[i];
+
+    // Generate permutations of remaining characters (excluding current character)
+    const remainingChars = string.slice(0, i) + string.slice(i + 1);
+    const innerPermutations = permutateString(remainingChars);
+
+    // Append current character to each inner permutation
+    for (let j = 0; j < innerPermutations.length; j++) {
+      permutations.push(char + innerPermutations[j]);
+    }
+  }
+
+  return permutations;
+}
+
+function createTable(arr) {
+  let rows = Math.ceil(Math.sqrt(arr.length)/1.5);  // Calculate number of rows
+  let columns = Math.ceil(arr.length / rows); //Calculate number of columns
+  
+  let table = '<table>';
+  for (let i = 0; i < rows; i++) {
+    table += '<tr>';
+    for (let j = 0; j < columns; j++) {
+      let index = i * rows + j;
+      let value = index < arr.length ? arr[index] : '';
+      table += `<td><button style = "font-size: 18px" onclick = copy_clipboard(${value})>${value}</button></td>`;
+    }
+    table += '</tr>';
+  }
+  table += '</table>';
+  
+  return table;
+}
+//copy function, only work with numbers?
+function copy_clipboard(num) {
+            // Create a new textarea element and set its value to the text you want to copy
+            var copyText = document.createElement("textarea");
+            copyText.value = num.toString();
+
+            // Append the textarea element to the document
+            document.body.appendChild(copyText);
+
+            // Copy the text from the textarea to the clipboard
+            copyText.select();
+            document.execCommand("copy");
+
+            // Remove the temporary textarea
+            document.body.removeChild(copyText);
+
+        }
+//copy's the innel html of the final guess area.        
+function copy_inner_html(){
+            // Create a new textarea element and set its value to the text you want to copy
+            var copyText = document.createElement("textarea");
+            copyText.value = document.getElementById("final_guess").innerHTML;
+            
+            // Append the textarea element to the document
+            document.body.appendChild(copyText);
+
+            // Copy the text from the textarea to the clipboard
+            copyText.select();
+            document.execCommand("copy");
+
+            // Remove the temporary textarea
+            document.body.removeChild(copyText);
+}
+//copies a string to the clipboard
+function copy_clipboard(str) {
+            // Create a new textarea element and set its value to the text you want to copy
+            var copyText = document.createElement("textarea");
+            copyText.value = str;
+
+            // Append the textarea element to the document
+            document.body.appendChild(copyText);
+
+            // Copy the text from the textarea to the clipboard
+            copyText.select();
+            document.execCommand("copy");
+
+            // Remove the temporary textarea
+            document.body.removeChild(copyText);
+
+        }
+
+
+
+function Update(){
+
+
+
+var i = 1;
+var max_higher = -1;
+var row_name = "row";
+var row_name2 = "row";
+var input = "";
+var input2 = "";
+// 9 entries for now, will unshift to add 10 entries later.
+var digit_array = [0,0,0,0,0,0,0,0,0];
+// 9 entries
+var size_array = ["N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A"]
+
+
+i = 0;
+//get the digits from the array
+//note we're starting our index from 1! so we're not storing the zero value yet.
+//we'll need to derive zero later.
+while(i < 9)
+{
+++i;
+row_name = "row"+i;
+input = 'input[name='+row_name+']:checked';
+digit_array[i-1] = Number(document.querySelector(input).value);
+
+row_name2 = "row"+i;
+row_name2 = row_name2+i;
+input2 = 'input[name='+row_name2+']:checked';
+//This can have values of "Higher" or "Lower"
+size_array[i-1] = document.querySelector(input2).value;
+}
+
+//create max and min ints
+//the number MUST be lower than max and bigger than min
+//we must find the largest number with "higher"
+//and the lowest number with "Lower"
+//we can do this by traversing the array in two directions
+var max = 99999;
+var min = -1;
+i = 0;
+while(i < 9)
+{
+  if(size_array[8-i] == "Lower")
+  {
+    max = (9-i)*11111;
+  }
+  if(i != 8 && size_array[i] == "Higher")
+  {
+    min = (i+1)*11111;
+  }
+  ++i;
+}
+//some logic needed for the final guess to work.
+if(max == 99999 && min == 99999)
+{
+  min = 89999;
+}
+//alert("min = "+min+" max = "+max)
+
+var content = "";
+var final_guess = document.getElementById("final_guess");
+var final_guess_html = document.getElementById("final_guess_html");
+
+//let's figure out the first digit right away.
+//since the final guess will always be of the form x9999
+//we can tell what the first digit is based on size_array[8]'s value
+
+var first_digit = 0;
+{
+  if(size_array[8] == "Lower")
+  {
+    first_digit = min/11111;
+  }
+  else
+  {
+    first_digit = max/11111;
+  }
+}
+if(size_array[0] == "Lower" && size_array[8] == "Lower")
+{
+  first_digit = 1;
+}
+
+i = 0;
+var sub_sum = 0;
+//calculate the sum of all the correct digits, excluding the final guess.
+while(i < 8)
+{
+  sub_sum = digit_array[i] + sub_sum;
+  ++i;
+}
+//alert(sub_sum);
+//special logic to indicate that we have an extra 9 in our guess.
+if(sub_sum == 0)
+{
+  digit_array[8] = digit_array[8] + 1;
+}
+
+
+//Now that we have the first correct digit, we can subtract it off from the digit array.
+//This will give us an array with the remaining four correct digits afterwards.
+//We'll do a check later for formatting purposes
+
+digit_array[first_digit-1] = digit_array[first_digit-1]-1;
+
+//alert(digit_array[first_digit-1]);
+
+//create the logic for setting the final guess.
+//the final guess should start with the first digit.
+//then it should be followed by 4 9s.
+var final_string = first_digit.toString()+"9999";
+if(size_array[8] == "Higher" && size_array[0] != "Lower")
+{
+first_digit = first_digit - 1;
+final_string = first_digit.toString()+"9999";
+first_digit = first_digit +1;
+}
+//we make one exception: we do not need to guess 99999 ever
+//so cap it at 89999
+//reason being: zero can *never* be the first digit. so no need to guess 99999.
+if(size_array[7] == "Higher")
+{
+  final_string = "89999";
+}
+final_guess.innerHTML = final_string;
+//alert(final_string);
+//we now remove one from digit_array[8] if size_array[8] == "Lower"
+if(size_array[8] == "Lower")
+{
+  digit_array[8] = digit_array[8] - 1;
+}
+
+//Display some errors to the user if there's some faulty inputs.
+//Also, do not proceed with faulty inputs
+final_guess_html.innerHTML = "";
+if(digit_array[8] < 0)
+{
+
+return;
+}
+
+//note that if this is a negative number, the user didn't input something correctly
+//make sure to alert the user that it was wrongly input!
+if(digit_array[first_digit-1] < 0)
+{
+final_guess_html.innerHTML = "<center>Incorrect number on digits indicated on "+first_digit*11111+"! Check your data and try again!</center>";
+return;
+}
+
+//create the string to be permutated
+var input_string = first_digit.toString();
+i = 0;
+while(i < 9)
+{
+  ++i;
+  while(digit_array[i - 1] > 0)
+  {
+    input_string = input_string+i;
+    digit_array[i - 1] = digit_array[i - 1] - 1;
+  }
+}
+//determine the number of zeroes.
+var zero = 5 - input_string.length;
+while(zero > 0)
+{
+  input_string = input_string+"0";
+  zero = zero - 1;
+}
+//check that the input_string is actually length 5.
+//if it's not, something bad happened. abort and tell the user.
+if(input_string.length > 5)
+{
+  final_guess_html.innerHTML = "<center>Too many correct digits indicated! Please check your inputs!</center>";
+  return;
+}
+//alert(input_string);
+var fresh_set_array = [];
+//create the permutation array from the input string
+var perm_array = permutateString(input_string);
+//create a SET object, which will remove duplicates.
+const perm_set = new Set(perm_array);
+//create a new array from the SET object.
+var set_array = Array.from(perm_set);
+
+i = 0;
+max = max + 1;
+while (i < set_array.length)
+{
+if(Number(set_array[i]) < max && Number(set_array[i]) > min && set_array[i].startsWith(first_digit))
+{
+fresh_set_array.push(set_array[i]);
+}
+++i;
+}
+//convert the Set back to an array to sort.
+fresh_set_array.sort(function(a,b){return a-b});
+final_guess_html.innerHTML = "<center>"+createTable(fresh_set_array)+"</center>";
+if (fresh_set_array.length == 0)
+{
+  final_guess_html.innerHTML = "<center>This situation is impossible! Fix your data and try again!</center>";
+}
+
+}
+
+</script>
