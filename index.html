@@ -172,7 +172,7 @@ function createTable(arr) {
   for (let i = 0; i < rows; i++) {
     table += '<tr>';
     for (let j = 0; j < columns; j++) {
-      let index = i * rows + j;
+      let index = i * columns + j;
       let value = index < arr.length ? arr[index] : '';
       table += `<td><button style = "font-size: 18px" onclick = copy_clipboard(${value})>${value}</button></td>`;
     }
@@ -319,7 +319,10 @@ if(size_array[0] == "Lower" && size_array[8] == "Lower")
 {
   first_digit = 1;
 }
-
+if(size_array[7] == "Higher" && size_array[8] == "Higher")
+{
+  first_digit = 9;
+}
 i = 0;
 var sub_sum = 0;
 //calculate the sum of all the correct digits, excluding the final guess.
@@ -328,9 +331,9 @@ while(i < 8)
   sub_sum = digit_array[i] + sub_sum;
   ++i;
 }
-//alert(sub_sum);
+
 //special logic to indicate that we have an extra 9 in our guess.
-if(sub_sum == 0)
+if(size_array[7] == "Higher" && size_array[8] == "Higher")
 {
   digit_array[8] = digit_array[8] + 1;
 }
@@ -432,7 +435,16 @@ fresh_set_array.push(set_array[i]);
 }
 //convert the Set back to an array to sort.
 fresh_set_array.sort(function(a,b){return a-b});
-final_guess_html.innerHTML = "<center>"+createTable(fresh_set_array)+"</center>";
+
+i = 0;
+let alert_string = "";
+while(i < fresh_set_array.length)
+{
+alert_string = alert_string + fresh_set_array[i] + " ";
+++i;
+}
+let alert_array = alert_string.split(" ");
+final_guess_html.innerHTML = "<center>"+createTable(alert_array)+"</center>";
 if (fresh_set_array.length == 0)
 {
   final_guess_html.innerHTML = "<center>This situation is impossible! Fix your data and try again!</center>";
