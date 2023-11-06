@@ -166,7 +166,8 @@ function permutateString(string) {
 function createTable(arr) {
   let rows = Math.ceil(Math.sqrt(arr.length)/1.5);  // Calculate number of rows
   let columns = Math.ceil(arr.length / rows); //Calculate number of columns
-  
+  rows = 4;
+  columns = 6;
   let table = '<table>';
   for (let i = 0; i < rows; i++) {
     table += '<tr>';
@@ -419,7 +420,6 @@ var perm_array = permutateString(input_string);
 const perm_set = new Set(perm_array);
 //create a new array from the SET object.
 var set_array = Array.from(perm_set);
-
 i = 0;
 max = max + 1;
 while (i < set_array.length)
@@ -437,7 +437,7 @@ if (fresh_set_array.length == 0)
 {
   final_guess_html.innerHTML = "<center>This situation is impossible! Fix your data and try again!</center>";
 }
-
+fresh_set_array.length = 0;
 }
 
 </script>
