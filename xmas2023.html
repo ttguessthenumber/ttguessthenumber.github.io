@@ -1,0 +1,130 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+
+  <style>
+    body {
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+<div id = "final answer"></div>
+</body>
+</html>
+
+
+<script>
+
+function permutateString(string) {
+    // Thanks ChatGPT
+    // Base case: if the string is empty, no permutations can be generated
+    if (string.length === 0) return [''];
+  
+    // Initialize an array to store permutations
+    const permutations = [];
+  
+    // Iterate through each character of the string
+    for (let i = 0; i < string.length; i++) {
+      // Extract the current character
+      const char = string[i];
+  
+      // Generate permutations of remaining characters (excluding current character)
+      const remainingChars = string.slice(0, i) + string.slice(i + 1);
+      const innerPermutations = permutateString(remainingChars);
+  
+      // Append current character to each inner permutation
+      for (let j = 0; j < innerPermutations.length; j++) {
+        permutations.push(char + innerPermutations[j]);
+      }
+    }
+  
+    return permutations;
+  }
+
+  function removeDuplicates(array) {
+  return [...new Set(array)];
+}
+
+  function compareStrings(str1, str2) {
+  // Thanks ChatGPT
+  // This function compares two strings and returns the number of characters that are in the exact same spot common to both.
+
+  let count = 0;
+
+  // Compare characters at the same index position
+  for (let i = 0; i < str1.length && i < str2.length; i++) {
+    if (str1[i] === str2[i]) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+var i = 0;
+var guess = "";
+var digits_correct = 0;
+// the answer array will contain all valid possible answers. We will display this to the user after each input.
+var answer_array = [];
+var temp_array = [];
+var guess_history = "";
+
+
+guess = prompt("Enter the CORRECT digits of the number. IE, you found the digits were 1,3,5,7,9, so enter 13579.");
+guess_history = "First guess: "+guess;
+answer_array = permutateString(guess);
+answer_array = removeDuplicates(answer_array);
+digits_correct = prompt("How many digits were in the correct spot? (0 - 4)");
+guess_history = ""+guess_history+" Digits In Correct Spot:"+digits_correct +"<br><br>";
+//Loop to alter answer_array
+while(i < answer_array.length)
+{
+  if(compareStrings(answer_array[i],guess) == digits_correct)
+  {
+    temp_array.push(answer_array[i]);
+  }
+  ++i;
+}
+answer_array = temp_array;
+var end_loop = 0;
+while(!end_loop)
+{
+  i = 0;
+  temp_array = [];
+  guess = answer_array[0];
+  guess_history = guess_history+"Guess: "+guess;
+  digits_correct = prompt("You should guess "+guess+" and tell me how many digits were in the correct spot. (0 - 5)");
+  guess_history = ""+guess_history+" Digits In Correct Spot: "+ digits_correct+"<br><br>";
+  //Loop to alter answer_array
+  while(i < answer_array.length)
+  {
+  if(compareStrings(answer_array[i],guess) == digits_correct)
+  {
+    temp_array.push(answer_array[i]);
+  }
+  ++i;
+  }
+  answer_array = temp_array;
+  if(answer_array.length == 1)
+  {
+	alert("WOW YOU SOLVED IT, THE ANSWER REALLY WAS "+answer_array[0])
+  guess_history = guess_history + "<br> Solution: "+answer_array[0];
+  document.getElementById("final answer").innerHTML = guess_history;
+    break;
+  }
+    if(answer_array.length == 0)
+  {
+	alert("Something went wrong, please try again!")
+  document.getElementById("final answer").innerHTML = guess_history;
+    break;
+  }
+}
+
+
+
+
+
+
+  </script>
